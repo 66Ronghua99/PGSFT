@@ -1,0 +1,12 @@
+.venv/
+envs/*/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test-output/
+outputs/
+data/raw/
+data/canonical/
+data/splits/
+data/tokenized/
+data/evaluation/*/prepared.jsonl

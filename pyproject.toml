@@ -1,0 +1,60 @@
+[project]
+name = "pgsft"
+version = "0.1.0"
+description = "Standalone reproduction package for privilege-guided adaptive SFT"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "accelerate==1.14.0",
+    "datasets==5.0.1",
+    "einops==0.8.2",
+    "fla-core==0.5.2",
+    "flash-linear-attention @ git+https://github.com/fla-org/flash-linear-attention@9c8e42e762fce087c27b673af4922795d9edb85e",
+    "huggingface-hub==1.29.0",
+    "jinja2==3.1.6",
+    "liger-kernel==0.8.1",
+    "numpy==2.5.1",
+    "peft==0.20.0",
+    "pyarrow==25.0.0",
+    "pyyaml==6.0.3",
+    "safetensors==0.8.0",
+    "socksio==1.0.0",
+    "torch==2.11.0+cu130",
+    "transformers==5.14.1",
+    "trl==1.9.2",
+]
+
+[project.scripts]
+pgsft-prepare-data = "pgsft.cli.prepare_data:main"
+pgsft-train = "pgsft.cli.train:main"
+pgsft-merge = "pgsft.cli.merge:main"
+pgsft-eval = "pgsft.cli.evaluate:main"
+
+[dependency-groups]
+test = ["pytest==9.1.1"]
+pro6000 = [
+    "causal-conv1d==1.6.2.post1",
+    "flash-attn-4==4.0.0b30",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pgsft"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

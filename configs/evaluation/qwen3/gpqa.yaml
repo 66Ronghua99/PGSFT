@@ -1,0 +1,13 @@
+schema_version: 1
+benchmark: gpqa
+model_profile: qwen3
+inventory: data/evaluation/gpqa/inventory.jsonl
+inference_template: templates/qwen3_inference.jinja
+served_model_name: pgsft-qwen3
+context_length: 65536
+temperature: 1.0
+seed: null
+max_output_tokens: 32768
+benchmark_args:
+  expected_tasks: 198
+  scoring: broad_final

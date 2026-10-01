@@ -1,0 +1,39 @@
+schema_version: 1
+model_profile: qwen35
+method: sft
+data:
+  train_jsonl: data/tokenized/qwen35/train-1000-sft.jsonl
+  eval_jsonl: data/tokenized/qwen35/holdout-120-sft.jsonl
+  manifest: data/tokenized/qwen35/manifest.json
+  schema: sft
+templates:
+  train: templates/qwen35_train.jinja
+  inference: templates/qwen35_inference.jinja
+lora:
+  r: 32
+  alpha: 64
+  dropout: 0.0
+  target_modules: all-linear
+  exclude_modules: [lm_head]
+training:
+  learning_rate: 5.0e-5
+  global_batch_size: 32
+  num_epochs: 1
+  max_steps: 32
+  optimizer: adamw_torch_fused
+  scheduler: cosine
+  warmup_steps: 5
+  precision: bf16
+  attention_implementation: flash_attention_4
+  gradient_checkpointing: true
+  max_grad_norm: 1.0
+  seed: 42
+  save_steps: 8
+  eval_steps: 8
+selection:
+  rule: fixed_final
+  step: 32
+method_args: {}
+evidence:
+  source: report:2026-08-19-global-reduction-dft-sft-comparison
+  protocol_status: paper_reported

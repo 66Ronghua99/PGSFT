@@ -1,0 +1,8 @@
+schema_version: 1
+key: qwen3
+model: Qwen/Qwen3-4B-Thinking-2507
+revision: 768f209d9ea81521153ed38c47d515654e938aea
+train_template: templates/qwen3_train.jinja
+inference_template: templates/qwen3_inference.jinja
+student_max_length: 65536
+privileged_max_length: 83968

@@ -1,0 +1,14 @@
+schema_version: 1
+benchmark: swebench
+model_profile: qwen3
+inventory: configs/evaluation/swebench-89.json
+inference_template: templates/qwen3_inference.jinja
+served_model_name: pgsft-qwen3
+context_length: 65536
+temperature: 1.0
+seed: null
+max_output_tokens: 8192
+benchmark_args:
+  dataset_revision: 6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2
+  max_iterations: 150
+  workers: "4"

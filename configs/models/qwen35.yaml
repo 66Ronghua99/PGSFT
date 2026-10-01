@@ -1,0 +1,8 @@
+schema_version: 1
+key: qwen35
+model: Qwen/Qwen3.5-4B
+revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+train_template: templates/qwen35_train.jinja
+inference_template: templates/qwen35_inference.jinja
+student_max_length: 65536
+privileged_max_length: 84992

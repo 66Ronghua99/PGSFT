@@ -1,0 +1,11 @@
+[project]
+name = "pgsft-livecodebench"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "anthropic>=0.42.0",
+  "datasets>=3.2.0",
+  "numpy<2",
+  "pandas<3",
+  "tqdm",
+]

@@ -1,0 +1,14 @@
+{
+  "aggregation": "token-mean over active demonstration tokens",
+  "clip_direction": "upper; positive unit advantages make max(-ratio,-clipped_ratio) equal -min(ratio,clipped_ratio)",
+  "detach_boundary": "old_log_prob is recomputed before actor updates and treated as fixed during the update",
+  "epsilon_high": 0.28,
+  "loss_source": "verl/verl/trainer/ppo/core_algos.py::compute_policy_loss_vanilla",
+  "project_refresh_steps": 8,
+  "project_training_epochs": 3,
+  "project_training_learning_rate": 1e-06,
+  "ratio": "exp(clamp(current_target_logp - old_target_logp, -20, 20))",
+  "repository": "https://github.com/zwhong714/PSFT",
+  "revision": "930e23980a723ecef5af138e6e32aa3798b1fd64",
+  "upstream_snapshot_cadence": "old log probabilities are recomputed once before the actor update over the current outer batch"
+}

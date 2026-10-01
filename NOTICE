@@ -1,0 +1,6 @@
+PG-SFT reproduction package
+
+This product includes adaptations and interoperability code for Qwen,
+Nemotron-SFT-SWE-v3, PSFT, Berkeley Function Calling Leaderboard,
+LiveCodeBench, and SWE-bench. See THIRD_PARTY.md for source revisions and
+licenses. Dataset and model weights are not redistributed.

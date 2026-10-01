@@ -1,0 +1,42 @@
+schema_version: 1
+model_profile: qwen3
+method: pg_sft
+data:
+  train_jsonl: data/tokenized/qwen3/train-4992-paired.jsonl
+  eval_jsonl: data/tokenized/qwen3/holdout-120-paired.jsonl
+  manifest: data/tokenized/qwen3/manifest.json
+  schema: paired
+templates:
+  train: templates/qwen3_train.jinja
+  inference: templates/qwen3_inference.jinja
+lora:
+  r: 32
+  alpha: 64
+  dropout: 0.0
+  target_modules: all-linear
+  exclude_modules: [lm_head]
+training:
+  learning_rate: 5.0e-5
+  global_batch_size: 32
+  num_epochs: 1
+  max_steps: 156
+  optimizer: adamw_torch_fused
+  scheduler: cosine
+  warmup_steps: 5
+  precision: bf16
+  attention_implementation: flash_attention_4
+  gradient_checkpointing: true
+  max_grad_norm: 0.1
+  seed: 42
+  save_steps: 39
+  eval_steps: 39
+selection:
+  rule: fixed_final
+  step: 156
+method_args:
+  chunk_size: 128
+  alpha_scope: assistant_turn
+  teacher: fixed_base
+evidence:
+  source: report:2026-09-20-qwen3-thinking-5k-pgsft-four-benchmark
+  protocol_status: paper_reported

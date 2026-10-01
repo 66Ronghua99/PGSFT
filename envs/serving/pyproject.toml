@@ -1,0 +1,9 @@
+[project]
+name = "pgsft-serving"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "ninja==1.13.0",
+  "openai>=2.20.0",
+  "vllm==0.22.0",
+]

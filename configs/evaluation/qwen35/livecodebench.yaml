@@ -1,0 +1,14 @@
+schema_version: 1
+benchmark: livecodebench
+model_profile: qwen35
+inventory: configs/evaluation/livecodebench-120.json
+inference_template: templates/qwen35_inference.jinja
+served_model_name: pgsft-qwen35
+context_length: 65536
+temperature: 1.0
+seed: null
+max_output_tokens: 32768
+benchmark_args:
+  expected_tasks: 120
+  prepared_data: data/evaluation/livecodebench/prepared.jsonl
+  docker_image: pgsft-lcb
